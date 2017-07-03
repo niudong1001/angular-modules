@@ -1,0 +1,17 @@
+<div ng-include="'trees'"></div>
+<script id="trees" type="text/ng-template">
+	<div ng-repeat="item in nodes" >
+		<div ng-class="item.class.itemClass||nodesClass.class.itemClass" ng-click="clickItem(item,nodes)">
+			<span ng-class="item.class.leftIconClass||nodesClass.class.leftIconClass">
+			</span>
+			<span ng-class="item.class.textClass||nodesClass.class.textClass">
+				{{item.text}}
+			</span>
+			<span ng-class="item.class.rightIconClass||nodesClass.class.rightIconClass">
+				<span ng-class="item.class.closeIcon||nodesClass.class.closeIcon" ng-if="!item.isOpen"></span>
+				<span ng-class="item.class.openIcon||nodesClass.class.openIcon" ng-if="item.isOpen"></span>
+			</span>
+		</div>
+		<div ng-if="item.children.length>0&&item.isOpen" ng-include="'trees'" ng-init="nodes=item.children;nodesClass=nodesClass.childClass"></div>
+	</div>
+</script>
