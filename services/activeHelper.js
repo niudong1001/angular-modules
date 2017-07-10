@@ -30,5 +30,27 @@ function service(){
 			data.active=false;
 		});
 	}
+	this.isHaveTrue=function(dataSource){
+		let len=dataSource.length;
+		if(len){
+			for(let i=0;i<len;i++){
+				if(dataSource[i].active===true)
+					return true;
+			}
+			return false;
+		}
+		return null;
+	}
+	this.isHaveFalse=function(dataSource){
+		let len=dataSource.length;
+		if(len){
+			for(let i=0;i<len;i++){
+				if(dataSource[i].active===false)
+					return true;
+			}
+			return false;
+		}
+		return null;
+	}
 }
 module.exports=service;
